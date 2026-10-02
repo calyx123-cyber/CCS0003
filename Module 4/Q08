@@ -1,1 +1,24 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
 
+int main() {
+    double t1, t2, t3;
+
+    cout << "Enter three temperature readings: ";
+    cin >> t1 >> t2 >> t3;
+
+    double average = (t1 + t2 + t3) / 3.0;
+    double difference = fabs(t1 - t3);
+
+    cout << fixed << setprecision(3);
+    cout << "Average: " << average << '\n';
+    cout << "|T1 - T3|: " << difference << '\n';
+    cout << "floor: " << static_cast<int>(floor(average)) << '\n';
+    cout << "ceil: " << static_cast<int>(ceil(average)) << '\n';
+    cout << "trunc: " << static_cast<int>(trunc(average)) << '\n';
+    cout << "round: " << static_cast<int>(round(average)) << '\n';
+
+    return 0;
+}
