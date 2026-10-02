@@ -1,0 +1,36 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+
+int main() {
+    double width, height, coveragePerCan;
+    int coats;
+
+    cout << "Wall width: ";
+    cin >> width;
+    cout << "Wall height: ";
+    cin >> height;
+    cout << "Number of coats: ";
+    cin >> coats;
+    cout << "Coverage per can (square meters): ";
+    cin >> coveragePerCan;
+
+    if (coveragePerCan <= 0) {
+        cout << "Coverage per can must be greater than zero.\n";
+        return 1;
+    }
+
+    double wallArea = width * height;
+    double totalPaintArea = wallArea * coats;
+    double exactCans = totalPaintArea / coveragePerCan;
+    int cansToBuy = static_cast<int>(ceil(exactCans));
+
+    cout << fixed << setprecision(2);
+    cout << "Wall area: " << wallArea << '\n';
+    cout << "Total paint area: " << totalPaintArea << '\n';
+    cout << "Exact cans: " << exactCans << '\n';
+    cout << "Cans to buy: " << cansToBuy << '\n';
+
+    return 0;
+}
