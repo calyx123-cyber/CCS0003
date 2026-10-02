@@ -1,1 +1,51 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <string>
+using namespace std;
 
+int main() {
+    string productName;
+    double unitPrice, discountPercent, shippingFeePerBox;
+    int quantity, unitsPerBox;
+
+    cout << "Product name: ";
+    getline(cin, productName);
+
+    cout << "Unit price: ";
+    cin >> unitPrice;
+    cout << "Quantity: ";
+    cin >> quantity;
+    cout << "Discount percentage: ";
+    cin >> discountPercent;
+    cout << "Shipping fee per box: ";
+    cin >> shippingFeePerBox;
+    cout << "Units per box: ";
+    cin >> unitsPerBox;
+
+    if (quantity < 0 || unitsPerBox <= 0) {
+        cout << "Please enter a valid quantity and box capacity.\n";
+        return 1;
+    }
+
+    double subtotal = unitPrice * quantity;
+    double discount = subtotal * (discountPercent / 100.0);
+    double merchandiseTotal = subtotal - discount;
+    double exactBoxes = static_cast<double>(quantity) / unitsPerBox;
+    int boxesRequired = static_cast<int>(ceil(exactBoxes));
+    double shippingTotal = boxesRequired * shippingFeePerBox;
+    double amountDue = merchandiseTotal + shippingTotal;
+
+    cout << fixed << setprecision(2);
+    cout << "\n\tONLINE STORE INVOICE\n";
+    cout << "\tProduct: " << productName << '\n';
+    cout << "\tSubtotal: " << subtotal << '\n';
+    cout << "\tDiscount: " << discount << '\n';
+    cout << "\tDiscounted merchandise: " << merchandiseTotal << '\n';
+    cout << "\tExact boxes: " << exactBoxes << '\n';
+    cout << "\tBoxes required: " << boxesRequired << '\n';
+    cout << "\tShipping: " << shippingTotal << '\n';
+    cout << "\tAmount due: " << amountDue << '\n';
+
+    return 0;
+}
